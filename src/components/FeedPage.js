@@ -3,14 +3,19 @@ import Post from '../components/Post'
 import { Query } from 'react-apollo'
 import  { gql } from 'apollo-boost'
 
+
 export default class FeedPage extends Component {
+  
   render() {
     return (
       <Query query={FEED_QUERY}>
+      
         {({ data, loading, error, refetch }) => {
           if (loading) {
             return (
+             
               <div className="flex w-100 h-100 items-center justify-center pt7">
+                
                 <div>Loading ...</div>
               </div>
             )
@@ -19,16 +24,16 @@ export default class FeedPage extends Component {
           if (error) {
             return (
               <div className="flex w-100 h-100 items-center justify-center pt7">
+               
                 <div>Nothin here fam.</div>
               </div>
             )
           }
 
-          return (
-            <Fragment>
+          return <Fragment>
+              
               <h1>Feed</h1>
-              {data.feed &&
-                data.feed.map(post => (
+              {data.feed && data.feed.map(post => (
                   <Post
                     key={post.id}
                     post={post}
@@ -37,8 +42,7 @@ export default class FeedPage extends Component {
                   />
                 ))}
               {this.props.children}
-            </Fragment>
-          )
+            </Fragment>;
         }}
       </Query>
     )

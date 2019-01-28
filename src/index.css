@@ -77,3 +77,7 @@ form{
 img.Avatar {
  border-radius: 60%;
 }
+
+Card {
+align-content: center;
+}
